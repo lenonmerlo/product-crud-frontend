@@ -12,6 +12,41 @@ export default function ProductsPage() {
   const router = useRouter();
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
+  const [displayName] = useState<string>(() => {
+    if (typeof window === "undefined") {
+      return "";
+    }
+
+    const userRaw = localStorage.getItem("user");
+
+    if (!userRaw) {
+      return "";
+    }
+
+    try {
+      const parsed = JSON.parse(userRaw) as {
+        name?: unknown;
+        nome?: unknown;
+        email?: unknown;
+      };
+
+      if (typeof parsed.name === "string" && parsed.name.trim()) {
+        return parsed.name.trim();
+      }
+
+      if (typeof parsed.nome === "string" && parsed.nome.trim()) {
+        return parsed.nome.trim();
+      }
+
+      if (typeof parsed.email === "string" && parsed.email.includes("@")) {
+        return parsed.email.split("@")[0];
+      }
+
+      return "";
+    } catch {
+      return "";
+    }
+  });
   const [hasToken] = useState<boolean>(() => {
     if (typeof window === "undefined") {
       return false;
@@ -94,6 +129,9 @@ export default function ProductsPage() {
                 Lippaus
               </h1>
             </div>
+            <p className="mt-1 text-sm font-medium text-muted">
+              Olá{displayName ? `, ${displayName}` : ""}
+            </p>
           </div>
 
           <div className="flex items-center gap-2">
