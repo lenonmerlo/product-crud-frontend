@@ -1,36 +1,145 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Product CRUD Frontend (web)
 
-## Getting Started
+Aplicação frontend do case técnico, construída com Next.js (App Router), foco em autenticação por token, fluxo CRUD de produtos e cobertura de testes.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-16.2.6-000000?logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-19.2.4-20232a?logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-0F172A?logo=tailwindcss&logoColor=38BDF8)
+![Vitest](https://img.shields.io/badge/Vitest-4.x-1a1a1a?logo=vitest&logoColor=FCC72B)
+![Playwright](https://img.shields.io/badge/Playwright-1.60-2EAD33?logo=playwright&logoColor=white)
+![Node](https://img.shields.io/badge/Node-%3E%3D20-5FA04E?logo=nodedotjs&logoColor=white)
+![NPM](https://img.shields.io/badge/npm-%3E%3D10-CB3837?logo=npm&logoColor=white)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS v4
+- Axios
+- React Hook Form + Zod
+- Vitest + Testing Library
+- Playwright
+
+## Requisitos
+
+- Node.js 20+
+- npm 10+
+
+## Variáveis de ambiente
+
+Crie (ou ajuste) o arquivo `.env.local` na pasta `web`:
+
+```env
+NEXT_PUBLIC_API_URL=https://product-crud-api-production.up.railway.app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Se não informado, a aplicação usa fallback para `http://localhost:3333`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Como rodar localmente
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+Aplicação em: `http://localhost:3000`
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `npm run dev`: ambiente de desenvolvimento.
+- `npm run build`: build de produção.
+- `npm run start`: sobe app compilado.
+- `npm run lint`: validação de lint.
+- `npm run test`: alias para unit/component.
+- `npm run test:unit`: testes unitários/componentes com cobertura.
+- `npm run test:watch`: Vitest em modo watch.
+- `npm run test:e2e`: testes E2E com Playwright.
+- `npm run test:e2e:ui`: runner visual do Playwright.
+- `npm run test:e2e:install`: instala browser do Playwright (Chromium).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Arquitetura resumida
 
-## Deploy on Vercel
+- `src/app`: rotas e páginas (App Router).
+- `src/components`: componentes reutilizáveis de UI e domínio.
+- `src/services`: camada de acesso a dados (API de produtos).
+- `src/hooks`: hooks de orquestração de estado.
+- `src/lib`: utilitários compartilhados (cliente API, schemas, tipos, erros).
+- `src/proxy.ts`: proteção de rotas com base em cookie `accessToken`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Arquitetura em prática (exemplo)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+src/
+├─ app/
+│  ├─ (auth)/
+│  │  ├─ login/page.tsx
+│  │  └─ register/page.tsx
+│  ├─ products/
+│  │  ├─ page.tsx
+│  │  ├─ new/page.tsx
+│  │  └─ [id]/edit/page.tsx
+│  └─ layout.tsx
+├─ components/
+│  ├─ products/
+│  │  ├─ ProductCard.tsx
+│  │  └─ ProductForm.tsx
+│  └─ ui/
+├─ hooks/
+│  └─ useProducts.ts
+├─ services/
+│  └─ products-service.ts
+├─ lib/
+│  ├─ api.ts
+│  ├─ api-error.ts
+│  ├─ schemas.ts
+│  └─ types.ts
+└─ proxy.ts
+```
+
+Fluxo real de uma tela de edição de produto:
+
+1. `src/app/products/[id]/edit/page.tsx` carrega os dados iniciais e orquestra ações.
+2. `src/components/products/ProductForm.tsx` centraliza validação, estado de formulário e upload de imagem.
+3. `src/services/products-service.ts` encapsula chamadas HTTP (GET/PUT/UPLOAD).
+4. `src/lib/api.ts` injeta token via interceptor e trata `401` para redirecionar login.
+5. `src/proxy.ts` reforça proteção de rota no nível de navegação por cookie.
+
+## Autenticação e proteção de rotas
+
+- Rotas protegidas: `/products`.
+- Rotas de convidado: `/login`, `/register`.
+- O proxy redireciona:
+  - sem token em rota protegida -> `/login`
+  - com token em rota de convidado -> `/products`
+
+## Testes
+
+### Unitários e componentes
+
+```bash
+npm run test:unit
+```
+
+Inclui cobertura (V8) e gera relatório em `coverage/`.
+
+### E2E
+
+```bash
+npm run test:e2e:install
+npm run test:e2e
+```
+
+O Playwright sobe o app automaticamente via `npm run dev` durante a execução.
+
+## Qualidade
+
+Pipeline mínima recomendada antes de entregar:
+
+```bash
+npm run lint
+npm run test:unit
+npm run test:e2e
+npm run build
+```
