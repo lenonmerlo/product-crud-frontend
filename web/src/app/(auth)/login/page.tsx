@@ -31,6 +31,8 @@ export default function LoginPage() {
 
       localStorage.setItem("accessToken", response.data.accessToken);
       localStorage.setItem("user", JSON.stringify(response.data.user));
+      // eslint-disable-next-line react-hooks/immutability
+      document.cookie = `accessToken=${response.data.accessToken}; path=/; max-age=86400; samesite=lax`;
 
       router.replace("/products");
     } catch (err) {
