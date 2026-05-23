@@ -2,6 +2,8 @@
 
 Aplicação frontend do case técnico, construída com Next.js (App Router), foco em autenticação por token, fluxo CRUD de produtos e cobertura de testes.
 
+- **Web:** https://product-crud-frontend-three.vercel.app
+
 ![Next.js](https://img.shields.io/badge/Next.js-16.2.6-000000?logo=nextdotjs&logoColor=white)
 ![React](https://img.shields.io/badge/React-19.2.4-20232a?logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)

@@ -2,6 +2,8 @@
 
 Repositório do case técnico de frontend, organizado em estrutura de workspace.
 
+- **Web:** https://product-crud-frontend-three.vercel.app
+
 ## Estrutura
 
 - `web/`: aplicação frontend em Next.js (App Router), TypeScript e Tailwind CSS.
