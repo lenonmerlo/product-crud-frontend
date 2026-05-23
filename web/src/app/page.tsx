@@ -22,8 +22,9 @@ export default function Home() {
               Painel de produtos com visual elegante e foco comercial
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-muted">
-              Acesse seu ambiente de gestão para cadastrar, editar e organizar
-              produtos de forma clara, rápida e confiável.
+              Plataforma interna para cadastro, edição e organização do
+              catálogo de bebidas. Acesso restrito ao time comercial e
+              administrativo.
             </p>
           </div>
 
