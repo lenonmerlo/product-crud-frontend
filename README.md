@@ -1,39 +1,60 @@
-# Product CRUD Frontend
+# Product CRUD — Lippaus Case Técnico
 
-[![CI](https://github.com/lenonmerlo/product-crud-frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/lenonmerlo/product-crud-frontend/actions/workflows/ci.yml)
+Case técnico de desenvolvimento full stack para a Lippaus Distribuidora.
 
-Repositório do case técnico de frontend, organizado em estrutura de workspace.
+## 📦 Repositórios
+
+| Projeto                    | Repositório                                         | Deploy                                             |
+| -------------------------- | --------------------------------------------------- | -------------------------------------------------- |
+| Backend (Node.js + Prisma) | https://github.com/lenonmerlo/product-crud-api      | https://product-crud-api-production.up.railway.app |
+| Frontend (Next.js + Expo)  | https://github.com/lenonmerlo/product-crud-frontend | https://product-crud-frontend-three.vercel.app     |
+
+## 🔗 Links de produção
 
 - **Web:** https://product-crud-frontend-three.vercel.app
+- **API:** https://product-crud-api-production.up.railway.app
+- **Swagger:** https://product-crud-api-production.up.railway.app/api
+- **Health:** https://product-crud-api-production.up.railway.app/health
 
-## Estrutura
+## ✅ Checklist do enunciado
 
-- `web/`: aplicação frontend em Next.js (App Router), TypeScript e Tailwind CSS.
+| Requisito                               | Status                                                                |
+| --------------------------------------- | --------------------------------------------------------------------- |
+| CRUD de produto                         | ✅                                                                    |
+| Produtos ativos em destaque na listagem | ✅                                                                    |
+| Validação em tela, backend e banco      | ✅                                                                    |
+| Envio de imagem + miniatura na listagem | ✅                                                                    |
+| App mobile (Expo)                       | ✅                                                                    |
+| Página web (Next.js)                    | ✅                                                                    |
+| Backend Node.js + Prisma                | ✅ [product-crud-api](https://github.com/lenonmerlo/product-crud-api) |
+| Publicação em cloud                     | ✅ Railway (backend) + Vercel (web)                                   |
+| Repositórios informados                 | ✅                                                                    |
+| Extra: Autenticação de usuário          | ✅                                                                    |
+| Extra: CI/CD GitHub Actions             | ✅                                                                    |
 
-## Como executar
+## 🗂 Estrutura do monorepo
 
-1. Entre na aplicação web:
-   - `cd web`
-2. Instale dependências:
-   - `npm install`
-3. Rode em desenvolvimento:
-   - `npm run dev`
+```
+product-crud-frontend/
+├── web/        → Next.js (App Router)
+└── mobile/     → Expo (React Native)
+```
 
-A aplicação ficará disponível em `http://localhost:3000`.
+## 🚀 Como rodar
 
-## Documentação da aplicação
+### Web
 
-Toda a documentação técnica (arquitetura, scripts, testes e variáveis de ambiente) está em:
+```bash
+cd web
+npm install
+cp .env.local.example .env.local  # configure NEXT_PUBLIC_API_URL
+npm run dev
+```
 
-- `web/README.md`
+### Mobile
 
-## Stack (web)
-
-- Next.js 16 (App Router)
-- React 19
-- TypeScript
-- Tailwind CSS v4
-- React Hook Form + Zod
-- Axios
-- Vitest + Testing Library
-- Playwright
+```bash
+cd mobile
+npm install
+npx expo start
+```
