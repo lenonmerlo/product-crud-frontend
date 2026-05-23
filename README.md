@@ -1,5 +1,7 @@
 # Product CRUD Frontend
 
+[![CI](https://github.com/lenonmerlo/product-crud-frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/lenonmerlo/product-crud-frontend/actions/workflows/ci.yml)
+
 Repositório do case técnico de frontend, organizado em estrutura de workspace.
 
 - **Web:** https://product-crud-frontend-three.vercel.app

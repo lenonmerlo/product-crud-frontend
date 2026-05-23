@@ -1,5 +1,7 @@
 # Product CRUD Frontend (web)
 
+[![CI](https://github.com/lenonmerlo/product-crud-frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/lenonmerlo/product-crud-frontend/actions/workflows/ci.yml)
+
 Aplicação frontend do case técnico, construída com Next.js (App Router), foco em autenticação por token, fluxo CRUD de produtos e cobertura de testes.
 
 - **Web:** https://product-crud-frontend-three.vercel.app
