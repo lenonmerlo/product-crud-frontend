@@ -4,11 +4,11 @@ Case técnico de desenvolvimento full stack para a Lippaus Distribuidora.
 
 ## 📦 Repositórios
 
-| Projeto                    | Repositório                                         | Deploy                                             |
-| -------------------------- | --------------------------------------------------- | -------------------------------------------------- |
-| Backend (Node.js + Prisma) | https://github.com/lenonmerlo/product-crud-api      | https://product-crud-api-production.up.railway.app |
-| Frontend (Next.js + Expo)  | https://github.com/lenonmerlo/product-crud-frontend | https://product-crud-frontend-three.vercel.app     |
-| Mobile (Expo) | https://github.com/lenonmerlo/product-crud-frontend | https://expo.dev/accounts/lenonmerlo/projects/mobile/builds/c89f690b-bd70-4bfc-be97-888cea9122e6 |
+| Projeto                    | Repositório                                         | Deploy                                                                                           |
+| -------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Backend (Node.js + Prisma) | https://github.com/lenonmerlo/product-crud-api      | https://product-crud-api-production.up.railway.app                                               |
+| Frontend (Next.js + Expo)  | https://github.com/lenonmerlo/product-crud-frontend | https://product-crud-frontend-three.vercel.app                                                   |
+| Mobile (Expo)              | https://github.com/lenonmerlo/product-crud-frontend | https://expo.dev/accounts/lenonmerlo/projects/mobile/builds/c89f690b-bd70-4bfc-be97-888cea9122e6 |
 
 ## 🔗 Links de produção
 
