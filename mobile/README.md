@@ -1,10 +1,17 @@
-# Product CRUD Mobile (Expo)
+# Product CRUD Mobile (Expo/Android)
+
+![Expo](https://img.shields.io/badge/Expo-SDK%2054-000020?logo=expo&logoColor=white)
+![React Native](https://img.shields.io/badge/React%20Native-0.81-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)
+![Android Build](https://img.shields.io/badge/Android%20Build-EAS-3DDC84?logo=android&logoColor=white)
+![API](https://img.shields.io/badge/API-Railway-0B0D0E?logo=railway&logoColor=white)
 
 Aplicativo mobile do case tecnico da Lippaus para cadastro, edicao e organizacao de produtos.
 
 ## Repositorio e links
 
 - Repositorio frontend: https://github.com/lenonmerlo/product-crud-frontend
+- Build mobile (Expo/Android): https://expo.dev/accounts/lenonmerlo/projects/mobile/builds/c89f690b-bd70-4bfc-be97-888cea9122e6
 - Deploy web: https://product-crud-frontend-three.vercel.app
 - API: https://product-crud-api-production.up.railway.app
 - Swagger API: https://product-crud-api-production.up.railway.app/api
