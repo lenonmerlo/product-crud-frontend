@@ -29,15 +29,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #121910;
-    --surface: #18231a;
-    --foreground: #e8efe9;
-    --muted: #b7c2ba;
-    --brand: #3ea16f;
-    --brand-strong: #2b8055;
-    --accent: #e3c486;
-    --ring: #49a678;
-    --error: #f97066;
+    --background: #1f2b22;
+    --surface: #2a382e;
+    --foreground: #f1f5f2;
+    --muted: #c4cec8;
+    --brand: #57b282;
+    --brand-strong: #3b9668;
+    --accent: #e5ca95;
+    --ring: #69bb92;
+    --error: #ff8b80;
   }
 }
 
@@ -58,8 +58,8 @@ body {
 
 .auth-shell {
   background:
-    linear-gradient(150deg, rgba(15, 90, 54, 0.12), transparent 55%),
-    linear-gradient(30deg, rgba(194, 154, 86, 0.12), transparent 45%),
+    linear-gradient(150deg, rgba(15, 90, 54, 0.08), transparent 55%),
+    linear-gradient(30deg, rgba(194, 154, 86, 0.08), transparent 45%),
     var(--background);
 }
 

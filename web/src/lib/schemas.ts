@@ -31,7 +31,8 @@ export const registerSchema = z.object({
   password: passwordSchema,
 });
 
+export type CreateProductFormInput = z.input<typeof createProductSchema>;
 export type CreateProductInput = z.infer<typeof createProductSchema>;
-export type updateProductInput = z.infer<typeof updateProductSchema>;
+export type UpdateProductInput = z.infer<typeof updateProductSchema>;
 export type LoginInput = z.infer<typeof loginSchema>;
 export type RegisterInput = z.infer<typeof registerSchema>;
