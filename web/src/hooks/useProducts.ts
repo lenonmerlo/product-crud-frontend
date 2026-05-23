@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 
-import api from "@/lib/api";
-import type { CreateProductInput, UpdateProductInput } from "@/lib/schemas";
-import type { PaginatedProducts, Product } from "@/lib/types";
+import { getApiErrorMessage } from "@/lib/api-error";
+import { fetchProducts } from "@/services/products-service";
+import type { PaginatedProducts } from "@/lib/types";
 
 interface UseProductsOptions {
   page?: number;
@@ -19,18 +19,15 @@ export function useProducts({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchProducts = useCallback(async () => {
+  const loadProducts = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
 
-      const response = await api.get<PaginatedProducts>("/products", {
-        params: { page, limit },
-      });
-
-      setData(response.data);
-    } catch {
-      setError("Erro ao carregar produtos");
+      const response = await fetchProducts(page, limit);
+      setData(response);
+    } catch (error) {
+      setError(getApiErrorMessage(error, "Erro ao carregar produtos"));
     } finally {
       setLoading(false);
     }
@@ -42,49 +39,13 @@ export function useProducts({
     }
 
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    void fetchProducts();
-  }, [enabled, fetchProducts]);
+    void loadProducts();
+  }, [enabled, loadProducts]);
 
   return {
     data,
     loading: enabled ? loading : false,
     error,
-    refetch: fetchProducts,
+    refetch: loadProducts,
   };
-}
-
-export async function getProduct(id: string): Promise<Product> {
-  const response = await api.get<Product>(`/products/${id}`);
-  return response.data;
-}
-
-export async function createProduct(
-  data: CreateProductInput,
-): Promise<Product> {
-  const response = await api.post<Product>("/products", data);
-  return response.data;
-}
-
-export async function updateProduct(
-  id: string,
-  data: UpdateProductInput,
-): Promise<Product> {
-  const response = await api.put<Product>(`/products/${id}`, data);
-  return response.data;
-}
-
-export async function deleteProduct(id: string): Promise<void> {
-  await api.delete(`/products/${id}`);
-}
-
-export async function uploadProductImage(
-  id: string,
-  file: File,
-): Promise<Product> {
-  const formData = new FormData();
-  formData.append("file", file);
-
-  const response = await api.post<Product>(`/products/${id}/image`, formData);
-
-  return response.data;
 }

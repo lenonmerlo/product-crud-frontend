@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
 import { ProductCard } from "@/components/products/ProductCard";
-import { deleteProduct, useProducts } from "@/hooks/useProducts";
+import { useProducts } from "@/hooks/useProducts";
+import { deleteProduct } from "@/services/products-service";
 
 export default function ProductsPage() {
   const router = useRouter();
@@ -16,7 +17,10 @@ export default function ProductsPage() {
       return false;
     }
 
-    return Boolean(localStorage.getItem("accessToken"));
+    return (
+      Boolean(localStorage.getItem("accessToken")) ||
+      document.cookie.includes("accessToken=")
+    );
   });
 
   const { data, loading, error, refetch } = useProducts({
@@ -34,6 +38,8 @@ export default function ProductsPage() {
   function handleLogout() {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("user");
+
+    document.cookie = "accessToken=; path=/; max-age=0";
     router.replace("/login");
   }
 

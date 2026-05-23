@@ -36,7 +36,8 @@ export default function RegisterPage() {
 
       localStorage.setItem("accessToken", loginResponse.data.accessToken);
       localStorage.setItem("user", JSON.stringify(loginResponse.data.user));
-
+      // eslint-disable-next-line react-hooks/immutability
+      document.cookie = `accessToken=${loginResponse.data.accessToken}; path=/; max-age=86400; samesite=lax`;
       router.replace("/products");
     } catch (err) {
       if (axios.isAxiosError(err)) {
