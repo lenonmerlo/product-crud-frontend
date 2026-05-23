@@ -13,8 +13,8 @@ const passwordSchema = z
   .min(6, "Senha deve ter no mínimo 6 caracteres");
 
 export const createProductSchema = z.object({
-  codigoProduto: z.string().min(1, "Código é obrigatório"),
-  descricaoProduto: z.string().min(1, "Descrição é obrigatória"),
+  codigoProduto: requiredString("Código é obrigatório"),
+  descricaoProduto: requiredString("Descrição é obrigatória"),
   status: z.boolean().default(true),
 });
 
@@ -25,7 +25,7 @@ export const loginSchema = z.object({
   password: passwordSchema,
 });
 
-export const regiterSchema = z.object({
+export const registerSchema = z.object({
   name: requiredString("Nome é obrigatório"),
   email: emailSchema,
   password: passwordSchema,
@@ -34,4 +34,4 @@ export const regiterSchema = z.object({
 export type CreateProductInput = z.infer<typeof createProductSchema>;
 export type updateProductInput = z.infer<typeof updateProductSchema>;
 export type LoginInput = z.infer<typeof loginSchema>;
-export type RegisterInput = z.infer<typeof regiterSchema>;
+export type RegisterInput = z.infer<typeof registerSchema>;

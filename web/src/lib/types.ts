@@ -1,11 +1,12 @@
 export interface Product {
-    id: string;
-    codigoProduto: string;
-    status: boolean;
-    fotoProduto: string | null;
-    thumbnaiUrl: string | null;
-    createdAt: string;
-    updatedAt: string;
+  id: string;
+  codigoProduto: string;
+  descricaoProduto: string;
+  status: boolean;
+  fotoProduto: string | null;
+  thumbnailUrl: string | null;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface PaginatedProducts {
